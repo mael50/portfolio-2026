@@ -1,0 +1,13 @@
+{
+  "name": "Kaenbio",
+  "image": "/projects/kaenbio.webp",
+  "link": "https://kaenbio.fr",
+  "release": "2024",
+  "featured": true,
+  "description": "Kaenbio is an online store and institute dedicated to organic and natural cosmetics. Based in Granville and Agon-Coutainville, the site offers a wide range of environmentally friendly and skin-friendly products, as well as personalized treatments. Developed with WooCommerce, it provides a smooth shopping experience and an elegant showcase for natural products.",
+  "about_client": "Kaenbio is a family-owned business based in Normandy, in Granville and Agon-Coutainville. Passionate about well-being and nature, they offer a rigorous selection of organic and natural cosmetics for the whole family. In addition to their online store, they welcome clients to their institute for personalized treatments, combining expertise with environmentally friendly products.",
+  "about_project": "The mission was to design a high-performance and aesthetic e-commerce platform capable of reflecting the brand's natural and premium identity. The site, developed with WooCommerce, offers intuitive navigation allowing users to easily discover the different product ranges (face care, body care, hair care, etc.). Particular attention was paid to the design, which is clean and soothing, as well as SEO optimization to ensure good local and national visibility.",
+  "gallery": [
+    "/projects/kaenbio.webp"
+  ]
+}

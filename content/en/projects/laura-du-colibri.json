@@ -1,0 +1,13 @@
+{
+  "name": "L'Aura du Colibri",
+  "image": "/projects/laura-colibri.webp",
+  "link": "https://lauraducolibri.fr",
+  "release": "2025",
+  "featured": true,
+  "description": "L'Aura du Colibri is a showcase website for a wellness massage practitioner in Caen. The site presents the various massage services in a soft and soothing atmosphere, inspired by nature and the hummingbird. It allows clients to discover Laura's world and easily book an appointment.",
+  "about_client": "Laura is a certified wellness massage practitioner, passionate about guiding others towards relaxation and letting go. Based in Caen, she created L'Aura du Colibri to offer a gentle interlude to her clients. Her approach is caring and personalized, reflecting the hummingbird which symbolizes joy and lightness.",
+  "about_project": "The goal was to create a showcase website that reflects the gentleness and serenity of the treatments offered. The design highlights natural shades and elegant typography to establish an atmosphere of trust and well-being from the first visit. The site is optimized to clearly present rates and facilitate contact.",
+  "gallery": [
+    "/projects/laura-colibri.webp"
+  ]
+}

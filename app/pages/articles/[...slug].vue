@@ -40,18 +40,10 @@ defineOgImage({
 
 <template>
   <div v-if="page">
-    <FolioMeta
-      :page
-      :is-writing="route.path.includes('/articles/')"
-    />
-    <NuxtLinkLocale
-      to="/writing"
-      class="mx-auto my-8 flex cursor-pointer items-center gap-2 px-4 text-muted hover:text-primary transition-colors duration-200 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl"
-    >
-      <UIcon
-        name="lucide:arrow-left"
-        class="size-4"
-      />
+    <FolioMeta :page :is-writing="route.path.includes('/articles/')" />
+    <NuxtLinkLocale to="/writing"
+      class="mx-auto mt-24 mb-12 flex cursor-pointer items-center gap-2 px-4 text-muted hover:text-primary transition-colors duration-200 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl">
+      <UIcon name="lucide:arrow-left" class="size-4" />
       <span class="text-sm font-extralight">
         {{ $t("navigation.writing") }}
       </span>
@@ -69,23 +61,14 @@ defineOgImage({
         <p class="hidden sm:block">
           |
         </p>
-        <UTooltip
-          :text="$t('writing.copy_link')"
-          :shortcuts="['⌘', 'K']"
-        >
-          <p
-            class="flex cursor-pointer select-none items-center gap-1 transition-colors duration-200 hover:text-primary"
-            @click="copyArticleLink"
-          >
+        <UTooltip :text="$t('writing.copy_link')" :shortcuts="['⌘', 'K']">
+          <p class="flex cursor-pointer select-none items-center gap-1 transition-colors duration-200 hover:text-primary"
+            @click="copyArticleLink">
             {{ $t("writing.share") }}
           </p>
         </UTooltip>
       </div>
-      <ContentRenderer
-        v-if="page"
-        :dir="localeProperties?.dir ?? 'ltr'"
-        :value="page"
-      />
+      <ContentRenderer v-if="page" :dir="localeProperties?.dir ?? 'ltr'" :value="page" />
     </article>
   </div>
 </template>

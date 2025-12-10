@@ -1,0 +1,13 @@
+{
+  "name": "Cultio",
+  "image": "/projects/cultio.webp",
+  "link": "https://cultio.maellaroque.fr/",
+  "release": "Bientôt...",
+  "featured": true,
+  "description": "Cultio est une solution complète de gestion agricole conçue pour les petites et moyennes exploitations. L'application permet de centraliser la gestion des parcelles, des cultures, des tâches et des finances pour optimiser les rendements et simplifier le quotidien des agriculteurs.",
+  "about_client": "Cultio est une initiative née du besoin de moderniser et de simplifier la gestion des exploitations agricoles. L'objectif est de fournir aux agriculteurs un outil intuitif et puissant pour les accompagner dans leur transition numérique et l'optimisation de leur production.",
+  "about_project": "Le défi était de concevoir une interface utilisateur ergonomique capable de gérer des données complexes (cartographie des parcelles, suivi des cultures, comptabilité) tout en restant accessible sur le terrain. L'application intègre des fonctionnalités avancées comme la météo agricole, la gestion des stocks et des tableaux de bord analytiques pour une prise de décision éclairée.",
+  "gallery": [
+    "/projects/cultio.webp"
+  ]
+}

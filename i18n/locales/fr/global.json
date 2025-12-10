@@ -19,5 +19,7 @@
   "meeting": "Prendre rendez-vous",
   "available" : "Disponible pour de nouvelles opportunités",
   "unavailable" : "Actuellement en train de travailler sur d'autres projet génial",
-  "all_rights_reserved": "Tous droits réservés"
+  "all_rights_reserved": "Tous droits réservés",
+  "about_client": "À propos du client",
+  "about_project": "À propos du projet"
 }

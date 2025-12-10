@@ -24,6 +24,8 @@ const commonProjectSchema = z.object({
   date: z.string().nonempty(),
   featured: z.boolean().optional(),
   description: z.string().optional(),
+  about_client: z.string().optional(),
+  about_project: z.string().optional(),
   gallery: z.array(z.string()).optional(),
 })
 
