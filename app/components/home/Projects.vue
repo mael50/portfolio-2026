@@ -18,15 +18,11 @@ const { data: projects } = await useAsyncData('projects', async () => {
       {{ $t("navigation.works") }}
     </h3>
     <div class="flex w-full flex-col gap-4">
-      <NuxtLink
-        v-for="project in projects?.filter((work) => work.featured)"
-        :key="project.name"
-        role="link"
+      <NuxtLink v-for="project in projects?.filter((work) => work.featured)" :key="project.name" role="link"
         class="flex cursor-pointer items-center gap-2 rounded-lg px-4 py-2 hover:bg-neutral-900"
-        :to="project.release === 'soon' ? localePath('/') : project.link"
-        :aria-label="'go to ' + project.name + ' project website'"
-        :target="project.release === 'soon' ? '_self' : '_blank'"
-      >
+        :to="project.release === 'soon' ? localePath('/') : localePath('/projects/' + project.stem.split('/').pop())"
+        :aria-label="'go to ' + project.name + ' project details'"
+        :target="project.release === 'soon' ? '_self' : '_self'">
         <span class="whitespace-nowrap font-medium">
           {{ project.name }}
         </span>

@@ -23,6 +23,8 @@ const commonProjectSchema = z.object({
   release: z.string().nonempty(),
   date: z.string().nonempty(),
   featured: z.boolean().optional(),
+  description: z.string().optional(),
+  gallery: z.array(z.string()).optional(),
 })
 
 const commonFaqSchema = z.object({
