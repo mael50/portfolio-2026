@@ -15,10 +15,21 @@ defineProps({
       {{ $t("global.experiences") }}
     </h3>
     <div class="flex flex-col gap-4">
-      <div v-for="experience in experiences" :key="experience.title" class="flex items-start gap-4">
-        <div v-if="experience.logo" class="flex-shrink-0">
-          <img :src="experience.logo" :alt="experience.company + ' logo'" class="h-12 w-12 rounded-full object-cover 
-           p-1" />
+      <div
+        v-for="experience in experiences"
+        :key="experience.title"
+        class="flex items-start gap-4"
+      >
+        <div
+          v-if="experience.logo"
+          class="flex-shrink-0"
+        >
+          <img
+            :src="experience.logo"
+            :alt="experience.company + ' logo'"
+            class="h-12 w-12 rounded-full object-cover
+           p-1"
+          >
         </div>
         <div>
           <h4 class="font-semibold">

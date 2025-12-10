@@ -1,11 +1,11 @@
 {
   "title": "Contact me",
   "description": "Let's talk about your ideas, projects or anything else",
-  "fullname": "Fullname",
-  "email": "Email",
-  "phone": "Phone",
-  "subject": "Subject of your message",
-  "message": "Message",
+  "label_name": "Fullname",
+  "label_email": "Email",
+  "label_phone": "Phone",
+  "label_subject": "Subject of your message",
+  "label_message": "Message",
   "submit": "Send",
   "disabled": "You must set your resend API key",
   "success": "Your message has been sent successfully",
@@ -16,5 +16,17 @@
     "bug": "Report a bug",
     "question": "Ask a question",
     "other": "Other"
+  },
+  "placeholders": {
+    "name": "John Doe",
+    "email": "john.doe@gmail.com",
+    "phone": "123-456-7890",
+    "message": "Let's work together!"
+  },
+  "errors": {
+    "email_invalid": "Invalid email",
+    "message_short": "Message is too short",
+    "subject_short": "Subject is too short",
+    "name_short": "Name is too short"
   }
 }
