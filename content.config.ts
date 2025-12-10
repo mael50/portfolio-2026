@@ -30,15 +30,10 @@ const commonProjectSchema = z.object({
 const commonFaqSchema = z.object({
   title: z.string().nonempty(),
   subtitle: z.string().nonempty(),
-  faqQuestions: z.array(
+  items: z.array(
     z.object({
-      title: z.string().nonempty(),
-      questions: z.array(
-        z.object({
-          label: z.string().nonempty(),
-          content: z.string().nonempty(),
-        }),
-      ),
+      label: z.string().nonempty(),
+      content: z.string().nonempty(),
     }),
   ),
 })

@@ -14,28 +14,34 @@ const { data: projects } = await useAsyncData('projects', async () => {
 
 <template>
   <div class="flex w-full flex-col gap-6">
-    <h3 class="font-newsreader italic text-white-shadow text-xl">
+    <h3 class="font-newsreader italic text-white-shadow text-3xl sm:text-4xl">
       {{ $t("navigation.works") }}
     </h3>
-    <div class="flex w-full flex-col gap-4">
-      <NuxtLink v-for="project in projects?.filter((work) => work.featured)" :key="project.name" role="link"
-        class="flex cursor-pointer items-center gap-2 rounded-lg px-4 py-2 hover:bg-neutral-900"
-        :to="project.release === 'soon' ? localePath('/') : localePath('/projects/' + project.stem.split('/').pop())"
-        :aria-label="'go to ' + project.name + ' project details'"
-        :target="project.release === 'soon' ? '_self' : '_self'">
-        <span class="whitespace-nowrap font-medium">
-          {{ project.name }}
-        </span>
-        <div class="mx-2 h-[0.1px] w-full bg-muted" />
-        <span class="whitespace-nowrap">
-          {{ project.release === "soon" ? $t("global.soon") + "..." : project.release }}
-        </span>
-      </NuxtLink>
+    <div class="flex w-full gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar">
+      <div v-for="project in projects?.filter((work) => work.featured)" :key="project.name"
+        class="min-w-[300px] sm:min-w-[400px] snap-start">
+        <ProjectCard :project="project" />
+      </div>
+
+      <NuxtLinkLocale to="/works"
+        class="group relative flex min-w-[200px] sm:min-w-[250px] snap-start cursor-pointer flex-col items-center justify-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 transition-all hover:bg-white/10 hover:scale-[1.02]">
+        <div
+          class="size-14 flex items-center justify-center rounded-full border border-white/10 bg-white/5 transition-transform duration-500 group-hover:rotate-45">
+          <UIcon name="heroicons:arrow-up-right" class="size-6 text-white" />
+        </div>
+        <span class="font-newsreader italic text-lg text-white-shadow">{{ $t("global.see_more") }}</span>
+      </NuxtLinkLocale>
     </div>
-    <NuxtLinkLocale to="/works">
-      <span class="font-newsreader italic text-white-shadow cursor-pointer">
-        {{ $t("global.see_more") }}
-      </span>
-    </NuxtLinkLocale>
+    <div class="flex">
+      <NuxtLinkLocale to="/works" class="group flex items-center gap-2">
+        <span class="font-newsreader italic text-xl text-white-shadow transition-all group-hover:mr-2">
+          {{ $t("global.see_more") }}
+        </span>
+        <div
+          class="flex size-8 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all group-hover:bg-white/10 group-hover:border-white/40">
+          <UIcon name="heroicons:arrow-right" class="size-4 text-white transition-transform group-hover:-rotate-45" />
+        </div>
+      </NuxtLinkLocale>
+    </div>
   </div>
 </template>
