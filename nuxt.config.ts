@@ -28,6 +28,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://maellaroque.fr',
+    name: 'Maël Laroque',
     defaultLocale: 'fr',
     indexable: true,
   },
@@ -106,7 +107,7 @@ export default defineNuxtConfig({
       redirectOn: 'root',
     },
     strategy: 'prefix',
-    defaultLocale: 'en',
+    defaultLocale: 'fr',
   },
 
   icon: {

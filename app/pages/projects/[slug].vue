@@ -27,13 +27,25 @@ if (!project.value) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found' })
 }
 
+const url = useRequestURL()
+
 useSeoMeta({
   title: project.value.name,
   description: project.value.description,
   ogTitle: project.value.name,
   ogDescription: project.value.description,
   ogImage: project.value.image,
+  ogUrl: url.href,
+  twitterCard: 'summary_large_image',
 })
+
+useSchemaOrg([
+  defineWebPage({
+    name: project.value.name,
+    description: project.value.description,
+    image: project.value.image,
+  }),
+])
 </script>
 
 <template>

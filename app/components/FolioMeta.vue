@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { ContentEnCollectionItem, ContentFrCollectionItem } from '@nuxt/content'
+import type { ContentEnCollectionItem, ContentFrCollectionItem, ArticlesEnCollectionItem, ArticlesFrCollectionItem } from '@nuxt/content'
 
 useScriptPlausibleAnalytics({
   domain: 'maellaroque.fr',
 })
 
 const { page, isWriting } = defineProps<{
-  page: ContentEnCollectionItem | ContentFrCollectionItem
+  page: ContentEnCollectionItem | ContentFrCollectionItem | ArticlesEnCollectionItem | ArticlesFrCollectionItem
   isWriting: boolean
 }>()
 
@@ -24,12 +24,14 @@ const getTitleTemplate = (title: string | undefined) => {
   return `${title} | ${seo.title}`
 }
 
+const url = useRequestURL()
+
 useSeoMeta({
   ogSiteName: seo.title,
   ogTitle: pageSEO.value.title,
   ogDescription: pageSEO.value.description,
   ogType: isWriting ? 'article' : 'website',
-  ogUrl: seo.url,
+  ogUrl: url.href,
   author: profile.name,
   title: pageSEO.value.title,
   description: pageSEO.value.description,
@@ -37,6 +39,30 @@ useSeoMeta({
   twitterDescription: pageSEO.value.description,
   twitterCard: 'summary_large_image',
 })
+
+if (isWriting) {
+  useSchemaOrg([
+    defineArticle({
+      headline: pageSEO.value.title,
+      description: pageSEO.value.description,
+      image: (page as any).image?.src || '/og-image.png',
+      datePublished: page.date,
+      author: [
+        {
+          name: profile.name,
+          url: seo.url,
+        },
+      ],
+    }),
+  ])
+} else {
+  useSchemaOrg([
+    defineWebPage({
+      name: pageSEO.value.title,
+      description: pageSEO.value.description,
+    }),
+  ])
+}
 
 useHead({
   title: pageSEO.value.title,
