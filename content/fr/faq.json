@@ -3,27 +3,27 @@
   "subtitle": "Questions fréquentes",
   "items": [
     {
-      "label": "Quels types de projets acceptez-vous ?",
-      "content": "Je suis spécialisé dans la création de SaaS, de sites E-commerce et de sites vitrines haut de gamme. Je peux intervenir sur la création complète d'un produit (de A à Z) ou renforcer une équipe existante sur des problématiques techniques spécifiques."
+      "label": "Quels types de projets que je peux développer ?",
+      "content": "Je suis spécialisé dans la création de SaaS, de sites E-commerce et de sites vitrines. Je peux intervenir sur la création complète d'un produit (de A à Z) ou renforcer une équipe existante sur des problématiques techniques spécifiques."
     },
     {
-      "label": "Quelle est votre stack technique ?",
+      "label": "Quelle est ma stack technique ?",
       "content": "Je développe sur Nuxt (Vue.js) pour des interfaces ultra-rapides et Symfony (PHP) pour des backends robustes. Cette combinaison me permet de créer des applications web performantes, sécurisées et évolutives."
     },
     {
-      "label": "Gérez-vous l'hébergement et la maintenance ?",
-      "content": "Absolument. Mon objectif est votre tranquillité d'esprit. Je peux gérer l'ensemble du cycle de vie de votre projet : choix de l'hébergeur, déploiement, configuration des noms de domaine, et maintenance mensuelle pour les mises à jour et la sécurité."
+      "label": "Est-ce que je dois gérer l'hébergement et la maintenance ?",
+      "content": "Non, je gère l'hébergement et la maintenance. Mon objectif est votre tranquillité d'esprit. Je peux gérer l'ensemble du cycle de vie de votre projet : choix de l'hébergeur, déploiement, configuration des noms de domaine, et maintenance mensuelle pour les mises à jour et la sécurité."
     },
     {
       "label": "Comment se déroule une collaboration ?",
       "content": "Tout commence par une phase de découverte pour comprendre vos besoins. Ensuite, je vous fournis une proposition détaillée et un devis. Une fois validé, je développe votre projet avec des points d'étape réguliers (démos) jusqu'à la livraison finale et la formation à l'outil."
     },
     {
-      "label": "Quels sont vos tarifs ?",
+      "label": "Quels sont mes tarifs ?",
       "content": "Chaque projet est unique. Je fonctionne généralement au forfait pour les projets au périmètre bien défini (site vitrine, MVP), ou au temps passé (TJM) pour les missions de conseil et d'accompagnement long terme. N'hésitez pas à me contacter pour un devis personnalisé."
     },
     {
-      "label": "Travaillez-vous à distance ou sur site ?",
+      "label": "Comment fonctionne notre collaboration ?",
       "content": "Je travaille principalement à distance avec des clients de toute la France et à l'international. J'utilise des outils pour assurer une communication fluide et transparente tout au long du projet."
     },
     {

@@ -2,10 +2,7 @@
 import type { ContentEnCollectionItem, ContentFrCollectionItem } from '@nuxt/content'
 
 useScriptPlausibleAnalytics({
-  domain: 'canvas.hrcd.fr',
-  scriptInput: {
-    src: 'https://analytics.hrcd.fr/js/script.js',
-  },
+  domain: 'maellaroque.fr',
 })
 
 const { page, isWriting } = defineProps<{
@@ -23,7 +20,7 @@ const pageSEO = computed(() => ({
 
 const getTitleTemplate = (title: string | undefined) => {
   if (route.path === '/') return title || `${seo.title}`
-  if (isWriting) return title
+  if (isWriting) return title ?? null
   return `${title} | ${seo.title}`
 }
 
@@ -53,7 +50,10 @@ useHead({
   link,
 })
 
-defineOgImage({ url: 'https://canvas.hrcd.fr/og.png', width: 1200, height: 630, alt: 'Home image' })
+defineOgImageComponent('Main', {
+  title: pageSEO.value.title,
+  description: pageSEO.value.description,
+})
 </script>
 
 <template>

@@ -27,8 +27,8 @@ export default defineNuxtConfig({
   css: ['~/assets/style/main.css'],
 
   site: {
-    url: 'https://canvas.hrcd.fr',
-    defaultLocale: 'en',
+    url: 'https://maellaroque.fr',
+    defaultLocale: 'fr',
     indexable: true,
   },
 
