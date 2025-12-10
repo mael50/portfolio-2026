@@ -3,92 +3,57 @@
     {
       "name": "Nuxt",
       "link": "https://nuxt.com/",
-      "icon": "custom:nuxt"
+      "icon": "i-lineicons-nuxt"
     },
     {
-      "name": "Vue",
-      "link": "https://vuejs.org/",
-      "icon": "custom:vue"
+      "name": "Symfony",
+      "link": "https://symfony.com/",
+      "icon": "i-mdi-symfony"
     },
     {
-      "name": "Nest",
-      "link": "https://nestjs.com/",
-      "icon": "custom:nest"
+      "name": "Drizzle",
+      "link": "https://orm.drizzle.team/",
+      "icon": "i-simple-icons-drizzle"
     },
     {
-      "name": "TailwindCSS",
-      "link": "https://tailwindcss.com/",
-      "icon": "custom:tailwind"
+      "name": "WordPress",
+      "link": "https://wordpress.org/",
+      "icon": "i-mdi-wordpress"
     },
     {
-      "name": "Prisma",
-      "link": "https://www.prisma.io/",
-      "icon": "custom:prisma"
-    },
-    {
-      "name": "Vercel",
-      "link": "https://vercel.com/",
-      "icon": "custom:vercel"
-    },
-    {
-      "name": "Linear",
-      "link": "https://linear.app/",
-      "icon": "custom:linear"
-    },
-    {
-      "name": "Arc",
-      "link": "https://arc.net/",
-      "icon": "custom:arc"
-    },
-    {
-      "name": "Raycast",
-      "link": "https://raycast.com/",
-      "icon": "custom:raycast"
-    },
-    {
-      "name": "Notion",
-      "link": "https://www.notion.so/",
-      "icon": "custom:notion"
-    },
-    {
-      "name": "Cron",
-      "link": "https://calendar.cron.com/",
-      "icon": "custom:cron"
-    },
-    {
-      "name": "Spark",
-      "link": "https://sparkmailapp.com/",
-      "icon": "custom:spark"
-    },
-    {
-      "name": "1Password",
-      "link": "https://1password.com/",
-      "icon": "custom:onepassword"
-    },
-    {
-      "name": "Fig",
-      "link": "https://fig.io/",
-      "icon": "custom:fig"
+      "name": "Prestashop",
+      "link": "https://prestashop.com/",
+      "icon": "i-simple-icons-prestashop"
     },
     {
       "name": "Figma",
       "link": "https://www.figma.com/",
-      "icon": "custom:figma"
+      "icon": "i-simple-icons-figma"
     },
     {
-      "name": "Photoshop",
+      "name": "Python",
+      "link": "https://www.python.org/",
+      "icon": "i-simple-icons-python"
+    },
+    {
+      "name": "SQL",
+      "link": "https://en.wikipedia.org/wiki/SQL",
+      "icon": "i-mdi-database"
+    },
+    {
+      "name": "Tailwind CSS",
+      "link": "https://tailwindcss.com/",
+      "icon": "i-simple-icons-tailwindcss"
+    },
+    {
+      "name": "Adobe Photoshop",
       "link": "https://www.adobe.com/products/photoshop.html",
-      "icon": "custom:photoshop"
+      "icon": "i-simple-icons-adobephotoshop"
     },
     {
-      "name": "Illustrator",
+      "name": "Adobe Illustrator",
       "link": "https://www.adobe.com/products/illustrator.html",
-      "icon": "custom:illustrator"
-    },
-    {
-      "name": "Lightroom",
-      "link": "https://www.adobe.com/products/photoshop-lightroom.html",
-      "icon": "custom:lightroom"
+      "icon": "i-simple-icons-adobeillustrator"
     }
   ]
 }
