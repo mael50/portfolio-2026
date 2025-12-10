@@ -9,7 +9,12 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     'vue-sonner/nuxt',
+    '@nuxthub/core',
   ],
+
+  hub: {
+    database: true,
+  },
 
   imports: {
     presets: [
@@ -74,6 +79,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-05',
 
   nitro: {
+    preset: 'cloudflare-pages',
     experimental: {
       websocket: true,
     },
