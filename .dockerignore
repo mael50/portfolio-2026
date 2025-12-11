@@ -1,0 +1,9 @@
+node_modules
+.output
+.nuxt
+.git
+.gitignore
+.github
+.env
+dist
+README.md
