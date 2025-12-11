@@ -14,14 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          version: latest
-          run_install: false
+          node-version: 20
+          cache: npm
 
       - name: 📦 Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm install
 
       - name: 🛠️ Build
-        run: pnpm run build
+        run: npm run build

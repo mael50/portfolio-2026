@@ -129,15 +129,4 @@ export default defineNuxtConfig({
   ogImage: {
     zeroRuntime: true,
   },
-
-  studio: {
-    route: '/admin',
-
-    repository: {
-      provider: 'github',
-      owner: 'HugoRCD',
-      repo: 'canvas',
-      branch: 'main',
-    },
-  },
 })
