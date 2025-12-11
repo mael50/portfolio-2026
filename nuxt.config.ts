@@ -12,19 +12,6 @@ export default defineNuxtConfig({
     '@nuxthub/core',
   ],
 
-  hub: {
-    database: true,
-  },
-
-  imports: {
-    presets: [
-      {
-        from: 'vue-sonner',
-        imports: ['toast'],
-      },
-    ],
-  },
-
   devtools: {
     enabled: true,
   },
@@ -62,6 +49,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    resendApiKey: process.env.NUXT_PRIVATE_RESEND_API_KEY,
     public: {
       resend: !!process.env.NUXT_PRIVATE_RESEND_API_KEY,
     },
@@ -78,29 +66,8 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2025-01-05',
 
-  nitro: {
-    preset: 'cloudflare-pages',
-    experimental: {
-      websocket: true,
-    },
-    prerender: {
-      autoSubfolderIndex: false,
-      crawlLinks: true,
-      routes: ['/en', '/fr'],
-    },
-  },
 
-  hooks: {
-    'nitro:config': (config) => {
-      if (process.env.NUXT_PRIVATE_RESEND_API_KEY) {
-        config.handlers?.push({
-          method: 'post',
-          route: '/api/emails/send',
-          handler: '~~/server/emails/send.ts',
-        })
-      }
-    },
-  },
+
 
   i18n: {
     locales: [
