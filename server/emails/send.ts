@@ -8,7 +8,10 @@ export default defineEventHandler(async (event: H3Event) => {
   try {
     const body = (await readBody(event))
     const { email, subject, message, phone, fullname } = body
-    return await resend.emails.send({
+
+    console.log('Attempting to send email (manual handler):', { email, subject, fullname })
+
+    const data = await resend.emails.send({
       from: 'Maël Laroque <contact@maellaroque.fr>',
       to: ['contact@maellaroque.fr'],
       subject: 'Nouveau message de portfolio',
@@ -24,8 +27,24 @@ export default defineEventHandler(async (event: H3Event) => {
       </ul>
       `,
     })
+
+    if (data.error) {
+      console.error('Resend API error (manual handler):', data.error)
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Resend API Error',
+        data: data.error,
+      })
+    }
+
+    return data
   }
   catch (error) {
-    return { error }
+    console.error('Internal Server Error in /server/emails/send:', error)
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Internal Server Error',
+      data: error instanceof Error ? error.message : error,
+    })
   }
 })

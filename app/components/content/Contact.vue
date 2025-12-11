@@ -41,7 +41,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     }
     toast.success(t('contact.success'))
   }
-  catch {
+  catch (error) {
+    console.error('Contact form submission error:', error)
     toast.error(t('contact.error'))
   }
   loading.value = false
