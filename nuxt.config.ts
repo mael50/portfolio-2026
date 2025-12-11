@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     'vue-sonner/nuxt',
-    '@nuxthub/core',
   ],
 
   devtools: {

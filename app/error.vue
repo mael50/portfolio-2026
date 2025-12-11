@@ -26,19 +26,17 @@ function goBack() {
         {{ error.message }}
       </h1>
       <p class="mt-6 text-base leading-7 text-neutral-600">
-        Sorry, we couldn’t find the page you’re looking for.
+        Cette page n'a pas été trouvée.
       </p>
       <div class="mt-10 flex items-center justify-center gap-x-6">
         <NuxtLink
           class="bg-accent hover:bg-accent-hover cursor-pointer rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
-          @click="handleError"
-        >
+          @click="handleError">
           Go back home
         </NuxtLink>
         <button
           class="bg-accent hover:bg-accent-hover cursor-pointer rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
-          @click="goBack"
-        >
+          @click="goBack">
           Go back
         </button>
       </div>
