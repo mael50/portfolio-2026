@@ -58,9 +58,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    resendApiKey: process.env.NUXT_PRIVATE_RESEND_API_KEY,
+    resendApiKey: process.env.NUXT_RESEND_API_KEY || process.env.NUXT_PRIVATE_RESEND_API_KEY || '',
     public: {
-      resend: !!process.env.NUXT_PRIVATE_RESEND_API_KEY,
+      resend: !!(process.env.NUXT_RESEND_API_KEY || process.env.NUXT_PRIVATE_RESEND_API_KEY),
     },
   },
 
@@ -83,18 +83,6 @@ export default defineNuxtConfig({
       autoSubfolderIndex: false,
       crawlLinks: true,
       routes: ['/en', '/fr'],
-    },
-  },
-
-  hooks: {
-    'nitro:config': (config) => {
-      if (process.env.NUXT_PRIVATE_RESEND_API_KEY) {
-        config.handlers?.push({
-          method: 'post',
-          route: '/api/emails/send',
-          handler: '~~/server/emails/send.ts',
-        })
-      }
     },
   },
 

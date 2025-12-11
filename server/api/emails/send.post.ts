@@ -1,30 +1,35 @@
 import { Resend } from 'resend'
+import type { H3Event } from 'h3'
 
-const config = useRuntimeConfig()
-const resend = new Resend(config.resendApiKey || 're_RHUewHHg_De48QcJhqHQf74ciCwZPeox4')
+export default defineEventHandler(async (event: H3Event) => {
+  const config = useRuntimeConfig()
+  const resend = new Resend(config.resendApiKey)
 
-export default defineEventHandler(async (event) => {
   try {
-    const body = await readBody(event)
-    const { email, subject, message, fullname, phone } = body
+    const body = (await readBody(event))
+    const { email, subject, message, phone, fullname } = body
 
-    console.log('Attempting to send email:', { email, subject, fullname })
+    console.log('Attempting to send email (manual handler):', { email, subject, fullname })
 
     const data = await resend.emails.send({
-      from: 'Portfolio <contact@maellaroque.fr>',
+      from: 'Maël Laroque <contact@maellaroque.fr>',
       to: ['contact@maellaroque.fr'],
-      subject: `Nouveau message de ${fullname}: ${subject}`,
+      subject: 'Nouveau message de portfolio',
       html: `
-        <p><strong>Nom:</strong> ${fullname}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Téléphone:</strong> ${phone}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+      <p>Un nouveau message a été envoyé depuis le formulaire de contact de portfolio.</p>
+      <p>Voici les détails du message :</p>
+      <ul>
+        <li>Nom : ${fullname}</li>
+        <li>Email : ${email}</li>
+        <li>Téléphone : ${phone}</li>
+        <li>Sujet : ${subject}</li>
+        <li>Message : ${message}</li>
+      </ul>
       `,
     })
 
     if (data.error) {
-      console.error('Resend API error:', data.error)
+      console.error('Resend API error (manual handler):', data.error)
       throw createError({
         statusCode: 400,
         statusMessage: 'Resend API Error',
@@ -33,8 +38,9 @@ export default defineEventHandler(async (event) => {
     }
 
     return data
-  } catch (error) {
-    console.error('Internal Server Error in /api/emails/send:', error)
+  }
+  catch (error) {
+    console.error('Internal Server Error in /server/emails/send:', error)
     throw createError({
       statusCode: 500,
       statusMessage: 'Internal Server Error',
