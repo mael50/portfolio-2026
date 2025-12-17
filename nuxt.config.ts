@@ -64,6 +64,17 @@ export default defineNuxtConfig({
     },
   },
 
+  sourcemap: {
+    server: true,
+    client: true
+  },
+
+  vite: {
+    build: {
+      minify: false
+    }
+  },
+
   routeRules: {
     // Needed to activate preview on Nuxt Studio
     '/': { prerender: false },

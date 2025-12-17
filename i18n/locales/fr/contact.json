@@ -19,7 +19,7 @@
   },
   "placeholders": {
     "name": "Jean Dupont",
-    "email": "jean.dupont@gmail.com",
+    "email": "jean.dupont{'@'}gmail.com",
     "phone": "06 12 34 56 78",
     "message": "Travaillons ensemble !"
   },

@@ -19,7 +19,7 @@
   },
   "placeholders": {
     "name": "John Doe",
-    "email": "john.doe@gmail.com",
+    "email": "john.doe{'@'}gmail.com",
     "phone": "123-456-7890",
     "message": "Let's work together!"
   },
