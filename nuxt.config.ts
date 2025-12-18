@@ -9,7 +9,13 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     'vue-sonner/nuxt',
+    '@nuxtjs/plausible',
   ],
+
+  plausible: {
+    domain: 'maellaroque.fr',
+    apiHost: 'https://analytics2.maellaroque.fr',
+  },
 
 
   imports: {
