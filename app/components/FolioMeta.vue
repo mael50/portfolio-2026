@@ -12,6 +12,7 @@ const { page, isWriting } = defineProps<{
 
 const route = useRoute()
 const { link, seo, profile } = useAppConfig()
+const { t } = useI18n()
 
 const pageSEO = computed(() => ({
   title: isWriting ? page?.title : page?.title || seo.title,
@@ -25,13 +26,17 @@ const getTitleTemplate = (title: string | undefined) => {
 }
 
 const url = useRequestURL()
+const canonicalUrl = computed(() => {
+  const path = url.pathname.endsWith('/') && url.pathname !== '/' ? url.pathname.slice(0, -1) : url.pathname
+  return `${seo.url}${path}`
+})
 
 useSeoMeta({
   ogSiteName: seo.title,
   ogTitle: pageSEO.value.title,
   ogDescription: pageSEO.value.description,
   ogType: isWriting ? 'article' : 'website',
-  ogUrl: url.href,
+  ogUrl: canonicalUrl.value,
   author: profile.name,
   title: pageSEO.value.title,
   description: pageSEO.value.description,
@@ -40,19 +45,43 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+const breadcrumbs = computed(() => {
+  const items = [
+    { name: t('navigation.home'), item: '/' },
+  ]
+
+  if (isWriting) {
+    items.push({ name: t('navigation.writing'), item: '/writing' })
+    items.push({ name: pageSEO.value.title || '', item: route.path })
+  } else if (route.path !== '/') {
+    items.push({ name: pageSEO.value.title || '', item: route.path })
+  }
+
+  return items
+})
+
 if (isWriting) {
   useSchemaOrg([
     defineArticle({
       headline: pageSEO.value.title,
       description: pageSEO.value.description,
       image: (page as any).image?.src || '/og-image.png',
-      datePublished: page.date,
+      datePublished: (page as any).date,
+      dateModified: (page as any).dateModified || (page as any).date, // Fallback to published date
       author: [
         {
           name: profile.name,
           url: seo.url,
         },
       ],
+      publisher: {
+        name: seo.title,
+        logo: '/favicon.ico', // Or a better logo URL
+      },
+      mainEntityOfPage: canonicalUrl.value as any,
+    }),
+    defineBreadcrumb({
+      itemListElement: breadcrumbs.value,
     }),
   ])
 } else {
@@ -60,6 +89,9 @@ if (isWriting) {
     defineWebPage({
       name: pageSEO.value.title,
       description: pageSEO.value.description,
+    }),
+    defineBreadcrumb({
+      itemListElement: breadcrumbs.value,
     }),
   ])
 }
@@ -73,7 +105,10 @@ useHead({
     { name: 'robots', content: 'index, follow' },
     { name: 'color-scheme', content: 'light dark' },
   ],
-  link,
+  link: [
+    ...link,
+    { rel: 'canonical', href: canonicalUrl.value },
+  ],
 })
 
 defineOgImageComponent('Main', {

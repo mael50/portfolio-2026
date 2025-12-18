@@ -15,7 +15,7 @@ export default defineAppConfig({
     linkedin: 'https://www.linkedin.com/in/ma%C3%ABl-laroque-3884281bb/',
   },
   seo: {
-    title: 'Maël Laroque - Développeur Web Freelance',
+    title: 'Maël Laroque - Développeur Web Freelance & Expert Technique',
     description: 'Portfolio de Maël Laroque, Développeur Web Freelance spécialisé en SaaS, E-commerce et sites vitrines. Conception, déploiement et maintenance de projets web.',
     url: 'https://maellaroque.fr',
   },

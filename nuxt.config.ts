@@ -126,6 +126,15 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    zeroRuntime: true,
+    // zeroRuntime: true, // Désactivé pour permettre la génération à la volée en prod
+  },
+
+  sitemap: {
+    strictNuxtContentPaths: true,
+  },
+
+  robots: {
+    disallow: ['/secret', '/admin'],
+    allow: '/',
   },
 })
