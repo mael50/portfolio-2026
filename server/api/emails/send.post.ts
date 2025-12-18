@@ -3,6 +3,14 @@ import type { H3Event } from 'h3'
 
 export default defineEventHandler(async (event: H3Event) => {
   const config = useRuntimeConfig()
+
+  if (!config.resendApiKey) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Missing Resend API Key configuration',
+    })
+  }
+
   const resend = new Resend(config.resendApiKey)
 
   try {

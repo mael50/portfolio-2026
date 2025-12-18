@@ -18,10 +18,8 @@ async function onSubmit() {
       method: 'POST',
       body: form.value,
     })
-    toast.add({
-      title: t('contact.success'),
+    toast.success(t('contact.success'), {
       description: t('contact.success_description'),
-      color: 'success',
     })
     form.value = {
       email: '',
@@ -33,10 +31,8 @@ async function onSubmit() {
   }
   catch (error) {
     console.error(error)
-    toast.add({
-      title: t('contact.error'),
+    toast.error(t('contact.error'), {
       description: t('contact.error_description'),
-      color: 'error',
     })
   }
   finally {
