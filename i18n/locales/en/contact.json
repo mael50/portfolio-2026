@@ -9,7 +9,9 @@
   "submit": "Send",
   "disabled": "You must set your resend API key",
   "success": "Your message has been sent successfully",
+  "success_description": "I will get back to you as soon as possible.",
   "error": "Oups, an error occurred while sending your message",
+  "error_description": "Please try again later or contact me directly by email.",
   "budget": "Budget",
   "subject_types": {
     "project": "Talk about a project",

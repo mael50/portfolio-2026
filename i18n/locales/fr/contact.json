@@ -9,7 +9,9 @@
   "submit": "Envoyer",
   "disabled": "Vous devez définir votre clé d'API resend",
   "success": "Votre message a été envoyé avec succès",
+  "success_description": "Je vous répondrai dans les plus brefs délais.",
   "error": "Oups, une erreur s'est produite lors de l'envoi de votre message :(",
+  "error_description": "Veuillez réessayer plus tard ou me contacter directement par email.",
   "budget": "Budget",
   "subject_types": {
     "project": "Parler d'un projet",
