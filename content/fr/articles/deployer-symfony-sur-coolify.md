@@ -1,5 +1,5 @@
 ---
-title: Déployer une application Symfony avec Coolify : Guide Complet
+title: "Déployer une application Symfony avec Coolify : Guide Complet"
 description: Apprenez à déployer une application Symfony en utilisant Coolify, une plateforme de déploiement moderne et facile à utiliser.
 date: 2024-04-12
 image: /articles/symfony-coolify-v2.png

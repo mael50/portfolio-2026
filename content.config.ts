@@ -2,26 +2,28 @@ import { defineCollection, z } from '@nuxt/content'
 import { asSeoCollection } from '@nuxtjs/seo/content'
 
 const commonContentSchema = z.object({
-  title: z.string().nonempty(),
-  description: z.string().nonempty(),
-  date: z.string().nonempty(),
+  title: z.string().min(1),
+  description: z.string().optional(),
+  date: z.string().optional(),
+  path: z.string().optional(),
 })
 
 const commonArticleSchema = z.object({
-  title: z.string().nonempty(),
-  description: z.string().nonempty(),
-  date: z.string().nonempty(),
-  image: z.string().url(),
-  readingTime: z.string().nonempty(),
-  tags: z.array(z.string().nonempty()),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  date: z.string().min(1),
+  image: z.string().min(1),
+  readingTime: z.string().min(1),
+  tags: z.array(z.string().min(1)),
+  path: z.string().optional(),
 })
 
 const commonProjectSchema = z.object({
-  name: z.string().nonempty(),
-  image: z.string().url(),
-  link: z.string().url(),
-  release: z.string().nonempty(),
-  date: z.string().nonempty(),
+  name: z.string().min(1),
+  image: z.string(),
+  link: z.string(),
+  release: z.string().min(1),
+  date: z.string().min(1),
   featured: z.boolean().optional(),
   description: z.string().optional(),
   about_client: z.string().optional(),
@@ -30,82 +32,66 @@ const commonProjectSchema = z.object({
 })
 
 const commonFaqSchema = z.object({
-  title: z.string().nonempty(),
-  subtitle: z.string().nonempty(),
+  title: z.string().min(1),
+  subtitle: z.string().min(1),
   items: z.array(
     z.object({
-      label: z.string().nonempty(),
-      content: z.string().nonempty(),
+      label: z.string().min(1),
+      content: z.string().min(1),
     }),
   ),
 })
 
 export const collections = {
-  content_en: defineCollection(
-    asSeoCollection({
-      type: 'page',
-      source: {
-        include: 'en/**/*.md',
-        exclude: ['en/articles/*.md'],
-        prefix: '/en',
-      },
-      schema: commonContentSchema,
-    }),
-  ),
-  content_fr: defineCollection(
-    asSeoCollection({
-      type: 'page',
-      source: {
-        include: 'fr/**/*.md',
-        exclude: ['fr/articles/*.md'],
-        prefix: '/fr',
-      },
-      schema: commonContentSchema,
-    }),
-  ),
-  articles_en: defineCollection(
-    asSeoCollection({
-      type: 'page',
-      source: {
-        include: 'en/articles/*.md',
-        prefix: '/en/articles',
-      },
-      schema: commonArticleSchema,
-    }),
-  ),
-  articles_fr: defineCollection(
-    asSeoCollection({
-      type: 'page',
-      source: {
-        include: 'fr/articles/*.md',
-        prefix: '/fr/articles',
-      },
-      schema: commonArticleSchema,
-    }),
-  ),
-  projects_en: defineCollection(
-    asSeoCollection({
-      type: 'data',
-      source: 'en/projects/*.json',
-      schema: commonProjectSchema,
-    }),
-  ),
-  projects_fr: defineCollection(
-    asSeoCollection({
-      type: 'data',
-      source: 'fr/projects/*.json',
-      schema: commonProjectSchema,
-    }),
-  ),
+  content_en: defineCollection({
+    type: 'page',
+    source: {
+      include: 'en/**/*.md',
+      exclude: ['en/articles/*.md'],
+    },
+    schema: commonContentSchema,
+  }),
+  content_fr: defineCollection({
+    type: 'page',
+    source: {
+      include: 'fr/**/*.md',
+      exclude: ['fr/articles/*.md'],
+    },
+    schema: commonContentSchema,
+  }),
+  articles_en: defineCollection({
+    type: 'page',
+    source: {
+      include: 'en/articles/*.md',
+    },
+    schema: commonArticleSchema,
+  }),
+  articles_fr: defineCollection({
+    type: 'page',
+    source: {
+      include: 'fr/articles/*.md',
+    },
+    schema: commonArticleSchema,
+  }),
+  projects_en: defineCollection({
+    type: 'data',
+    source: 'en/projects/*.json',
+    schema: commonProjectSchema,
+  }),
+  projects_fr: defineCollection({
+    type: 'data',
+    source: 'fr/projects/*.json',
+    schema: commonProjectSchema,
+  }),
   stack: defineCollection({
     type: 'data',
     source: 'stack.json',
     schema: z.object({
       items: z.array(
         z.object({
-          name: z.string().nonempty(),
-          link: z.string().url(),
-          icon: z.string().nonempty(),
+          name: z.string().min(1),
+          link: z.string(),
+          icon: z.string().min(1),
         }),
       ),
     }),

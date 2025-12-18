@@ -114,6 +114,7 @@ useHead({
 defineOgImageComponent('Main', {
   title: pageSEO.value.title,
   description: pageSEO.value.description,
+  component: 'Main', // Force le composant
 })
 </script>
 

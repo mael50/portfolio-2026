@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import type { Collections } from '@nuxt/content'
-import { withLeadingSlash, joinURL } from 'ufo'
+import { withLeadingSlash, joinURL, withoutTrailingSlash } from 'ufo'
 
 const route = useRoute()
 const { locale, localeProperties, t } = useI18n()
 
-const slug = computed(() => Array.isArray(route.params.slug) ? route.params.slug as string[] : [route.params.slug as string])
-const path = computed(() => withLeadingSlash(joinURL(locale.value, ...slug.value)))
+const slug = computed(() => {
+  const params = route.params.slug
+  if (!params) return []
+  return Array.isArray(params) ? params : [params]
+})
+const path = computed(() => {
+  const p = joinURL(locale.value, ...slug.value)
+  return withLeadingSlash(withoutTrailingSlash(p))
+})
 const collection = computed(() => `content_${locale.value}` as keyof Collections)
 
 const { data: page } = await useAsyncData(path.value, async () =>

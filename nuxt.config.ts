@@ -130,7 +130,7 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    strictNuxtContentPaths: true,
+    // strictNuxtContentPaths: true, // Peut causer des problèmes avec les préfixes de fichiers
   },
 
   robots: {

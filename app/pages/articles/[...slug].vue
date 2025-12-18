@@ -1,12 +1,19 @@
 <script lang="ts" setup>
 import type { Collections } from '@nuxt/content'
-import { withLeadingSlash, joinURL } from 'ufo'
+import { withLeadingSlash, joinURL, withoutTrailingSlash } from 'ufo'
 
 const route = useRoute()
 const { locale, t, localeProperties } = useI18n()
 
-const slug = computed(() => Array.isArray(route.params.slug) ? route.params.slug as string[] : [route.params.slug as string])
-const path = computed(() => withLeadingSlash(joinURL(locale.value, 'articles', ...slug.value)))
+const slug = computed(() => {
+  const params = route.params.slug
+  if (!params) return []
+  return Array.isArray(params) ? params : [params]
+})
+const path = computed(() => {
+  const p = joinURL(locale.value, 'articles', ...slug.value)
+  return withLeadingSlash(withoutTrailingSlash(p))
+})
 const collection = computed(() => `articles_${locale.value}` as keyof Collections)
 
 const { data: page } = await useAsyncData(path.value, async () =>
@@ -33,9 +40,9 @@ defineShortcuts({
   },
 })
 
-if (page.value.image) {
+if ((page.value as any).image) {
   defineOgImage({
-    url: page.value.image,
+    url: (page.value as any).image,
   })
 }
 </script>
@@ -55,11 +62,11 @@ if (page.value.image) {
         {{ page?.title }}
       </h1>
       <div class="info-section mt-1 flex flex-col gap-2 sm:flex-row sm:gap-4">
-        <p>{{ page?.date }}</p>
+        <p>{{ (page as any)?.date }}</p>
         <p class="hidden sm:block">
           |
         </p>
-        <p>{{ page?.readingTime }} {{ $t("writing.readingTime") }}</p>
+        <p>{{ (page as any)?.readingTime }} {{ $t("writing.readingTime") }}</p>
         <p class="hidden sm:block">
           |
         </p>
