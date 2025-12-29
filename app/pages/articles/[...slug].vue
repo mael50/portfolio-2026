@@ -31,7 +31,7 @@ function copyArticleLink() {
 }
 
 defineShortcuts({
-  meta_k: {
+  meta_shift_c: {
     usingInput: true,
     handler: () => {
       copy(`${window.location.origin}${route.fullPath}`)
@@ -70,7 +70,7 @@ if ((page.value as any).image) {
         <p class="hidden sm:block">
           |
         </p>
-        <UTooltip :text="$t('writing.copy_link')" :shortcuts="['⌘', 'K']">
+        <UTooltip :text="$t('writing.copy_link')" :shortcuts="['⌘', '⇧', 'C']">
           <p class="flex cursor-pointer select-none items-center gap-1 transition-colors duration-200 hover:text-primary"
             @click="copyArticleLink">
             {{ $t("writing.share") }}

@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     '@nuxt/content',
-    'nuxt-studio',
     '@nuxt/image',
     '@nuxt/scripts',
     'vue-sonner/nuxt',
@@ -44,13 +43,6 @@ export default defineNuxtConfig({
     preference: 'dark',
     fallback: 'dark',
     storageKey: 'nuxt-color-mode-forced',
-  },
-
-  content: {
-    preview: {
-      api: 'https://api.nuxt.studio',
-      dev: true,
-    },
   },
 
   mdc: {

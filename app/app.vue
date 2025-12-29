@@ -35,6 +35,7 @@ useSchemaOrg([
     <NuxtLayout>
       <UApp :locale="locales[locale]">
         <NuxtPage />
+        <AppCommandPalette />
       </UApp>
     </NuxtLayout>
     <Toaster close-button />

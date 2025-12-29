@@ -6,9 +6,9 @@
         © {{ new Date().getFullYear() }}, Maël Laroque - {{
           $t("global.all_rights_reserved") }}.
       </span>
-      <NuxtLink to="/mentions-legales" class="text-muted hover:text-white transition-colors text-sm">
+      <NuxtLinkLocale to="/mentions-legales" class="text-muted hover:text-white transition-colors text-sm">
         {{ $t("global.mentions_legales") }}
-      </NuxtLink>
+      </NuxtLinkLocale>
     </footer>
   </div>
 </template>
