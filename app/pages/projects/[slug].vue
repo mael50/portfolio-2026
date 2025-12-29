@@ -41,9 +41,12 @@ useSeoMeta({
 
 useSchemaOrg([
   defineWebPage({
+    '@type': 'CreativeWork' as any,
     name: project.value.name,
     description: project.value.description,
     image: project.value.image,
+    datePublished: project.value.release,
+    url: url.href,
   }),
 ])
 </script>

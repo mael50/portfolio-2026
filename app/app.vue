@@ -18,6 +18,11 @@ useSchemaOrg([
       'https://www.linkedin.com/in/ma%C3%ABl-laroque-3884281bb/',
     ],
   }),
+  defineWebSite({
+    name: seo.title,
+    description: seo.description,
+    url: seo.url,
+  }),
 ])
 </script>
 
