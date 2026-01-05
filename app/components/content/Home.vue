@@ -43,6 +43,51 @@
 
         <Divider class="my-9" />
 
+        <!-- Locality Section -->
+        <section class="grid md:grid-cols-2 gap-12 items-center w-full max-w-4xl mx-auto my-16">
+          <div class="space-y-6 text-left">
+            <h2 class="font-newsreader italic text-3xl text-white-shadow">
+              {{ t('agency.why_local') }}
+            </h2>
+            <p class="text-neutral-400 leading-relaxed">
+              {{ t('agency.why_local_text') }}
+            </p>
+            <UButton :to="localePath('/contact')" size="xl" color="primary" variant="solid" :label="t('agency.cta')"
+              trailing-icon="i-heroicons-arrow-right-20-solid" class="mt-4" />
+          </div>
+          <div class="space-y-4">
+            <div
+              class="p-6 rounded-xl border border-white/10 bg-white/5 space-y-4 backdrop-blur-sm transition-colors hover:bg-white/10 overflow-hidden">
+              <div class="absolute inset-0">
+                <NuxtImg src="/caen.jpeg" alt="Caen" class="w-full h-full object-cover opacity-40 scale-125" />
+              </div>
+              <div class="relative z-10 h-24 flex items-end">
+                <div>
+                  <h3 class="font-bold text-white mb-1">Caen</h3>
+                  <p class="text-sm text-neutral-400">Calvados (14)</p>
+                </div>
+              </div>
+            </div>
+            <!-- Gouville Card -->
+            <div
+              class="group relative overflow-hidden p-6 rounded-xl border bg-white/5 border-white/10 space-y-4 translate-x-4 sm:translate-x-8">
+              <!-- Background Image -->
+              <div class="absolute inset-0">
+                <NuxtImg src="/gouville.jpeg" alt="Cabines Gouville-sur-Mer"
+                  class="w-full h-full object-cover opacity-40 transition-all duration-700 scale-130" />
+              </div>
+
+              <!-- Content -->
+              <div class="relative z-10 space-y-4 h-24 flex items-end">
+                <div>
+                  <h3 class="font-bold text-white mb-1">Gouville-sur-Mer</h3>
+                  <p class="text-sm text-neutral-200">Manche (50)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Content slot for SEO text -->
         <div v-if="$slots.content" class="w-full max-w-3xl prose dark:prose-invert mt-8 text-left">
           <slot name="content" />
@@ -58,7 +103,8 @@
 import type { Collections } from '@nuxt/content'
 
 const route = useRoute()
-const { locale } = useI18n()
+const localePath = useLocalePath()
+const { locale, t } = useI18n()
 const collection = computed(() => `content_${locale.value}` as keyof Collections)
 
 const { data: page } = await useAsyncData(route.path, () => queryCollection(collection.value).path(route.path).first())
