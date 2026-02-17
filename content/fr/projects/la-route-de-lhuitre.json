@@ -1,0 +1,22 @@
+{
+  "name": "La Route de l'Huître",
+  "image": "/projects/rdlh.webp",
+  "banner": "/projects/la-route-de-lhuitre-banner.jpg",
+  "link": "https://laroutedelhuitre.fr",
+  "release": "2026",
+  "featured": true,
+  "summary": "Guide numérique pour trouver producteurs, cabanes de dégustation et lieux de dégustation autour de vous.",
+  "description": "La Route de l'Huître est un guide numérique pour explorer le littoral et rencontrer les producteurs, du bassin à l'assiette. La plateforme permet de localiser des établissements autour de soi, de découvrir le savoir‑faire ostréicole et de préparer une visite grâce à des informations pratiques et des avis de la communauté.",
+  "about_client": "La Route de l'Huître valorise les producteurs et les lieux de dégustation en offrant un point d'entrée unique pour découvrir les établissements et organiser ses visites.",
+  "about_project": "L'objectif était de structurer une expérience de découverte claire et rapide : carte interactive, fiches établissements, avis de la communauté et informations essentielles comme les horaires, spécialités et itinéraires.",
+  "industry": "Gastronomie & terroir",
+  "highlights": [
+    "Localisation instantanée des producteurs et cabanes de dégustation",
+    "Horaires et périodes d'ouverture centralisés",
+    "Spécialités et types d'huîtres mis en avant",
+    "Itinéraires vers les lieux de dégustation"
+  ],
+  "gallery": [
+    "/projects/rdlh.webp"
+  ]
+}

@@ -1,69 +1,71 @@
 <script setup lang="ts">
-defineProps<{
+const props = withDefaults(defineProps<{
   project: {
     name: string
     release: string
     image: string
-    link: string
+    link?: string
     stem: string
+    summary?: string
+    description?: string
+    services?: string[]
+    stack?: string[]
   }
-}>()
+  variant?: 'compact' | 'grid' | 'featured'
+}>(), {
+  variant: 'compact',
+})
+
 const img = useImage()
 const localePath = useLocalePath()
+const { t } = useI18n()
+
+const isSoon = computed(() => /soon|bient/i.test(props.project.release || ''))
+const statusLabel = computed(() => (isSoon.value ? t('global.soon') : props.project.release))
+const summary = computed(() => props.project.summary || props.project.description || '')
+const tags = computed(() => (props.project.services?.length ? props.project.services : props.project.stack) || [])
+const tagLimit = computed(() => (props.variant === 'grid' ? 1 : 1))
+const imageRatio = computed(() => (props.variant === 'featured' ? 'aspect-[16/10]' : 'aspect-[4/3]'))
+const titleSize = computed(() => (props.variant === 'featured' ? 'text-xl' : 'text-lg'))
 </script>
 
 <template>
   <NuxtLink
-    :aria-label="project.name + ' project link'"
-    :to="project.release === 'soon' ? localePath('/') : localePath('/projects/' + project.stem.split('/').pop())"
-    :target="project.release === 'soon' ? '_self' : '_self'"
-    class="group relative flex cursor-pointer flex-col gap-1 rounded-lg border border-white/10 bg-zinc-900/80 p-1 shadow-2xl shadow-zinc-950/50 backdrop-blur-sm"
+    :aria-label="`${project.name} project link`"
+    :to="localePath('/projects/' + project.stem.split('/').pop())"
+    class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0f1412] text-white shadow-lg shadow-black/30 transition-all duration-300 hover:-translate-y-1"
   >
-    <div class="flex gap-1 px-1 py-[2px]">
-      <div
-        class="size-2 rounded-full bg-red-500/90 transition-all duration-300 group-hover:bg-red-500/90 sm:bg-white/10"
-      />
-      <div
-        class="size-2 rounded-full bg-yellow-500/90 transition-all duration-300 group-hover:bg-yellow-500/90 sm:bg-white/10"
-      />
-      <div
-        class="size-2 rounded-full bg-green-500/90 transition-all duration-300 group-hover:bg-green-500/90 sm:bg-white/10"
-      />
-    </div>
-    <div class="flex h-56 justify-center overflow-hidden rounded-lg">
+    <div class="pointer-events-none absolute -right-20 -top-20 h-44 w-44 rounded-full bg-emerald-300/15 blur-3xl" />
+    <div class="pointer-events-none absolute -left-24 bottom-6 h-40 w-40 rounded-full bg-amber-300/15 blur-3xl" />
+
+    <div class="relative mx-4 mt-4 overflow-hidden rounded-xl border border-white/10 bg-white/5" :class="imageRatio">
+      <div class="absolute inset-0 bg-gradient-to-tr from-black/50 via-black/10 to-transparent" />
       <NuxtImg
         :placeholder="img(`${project.image}`)"
         width="1536"
         :alt="project.name + ' project image'"
-        class="h-full rounded-lg object-cover transition-all duration-300 hover:scale-105"
+        class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         :src="project.image"
-        :aria-label="project.name + ' project image'"
       />
     </div>
-    <div class="absolute bottom-0 flex w-full justify-center">
-      <div
-        class="rounded-t-lg border-x border-t border-white/10 border-b-transparent px-4 py-[5px] shadow-md backdrop-blur-md sm:w-2/3"
-      >
-        <div class="flex items-center justify-between gap-2">
-          <div class="flex items-center gap-2">
-            <div class="flex items-center gap-2">
-              <span class="whitespace-nowrap text-sm font-semibold text-white/90">
-                {{ project.name }}
-              </span>
-              <span class="whitespace-nowrap text-xs text-neutral-500">
-                {{ project.release === "soon" ? $t("global.soon") + "..." : project.release }}
-              </span>
-            </div>
-          </div>
-          <div
-            class="flex items-center justify-center rounded-full border border-transparent p-1 shadow-md backdrop-blur-md transition-all duration-500 group-hover:-rotate-45 group-hover:border-white/10"
-          >
-            <UIcon
-              name="heroicons:arrow-right"
-              class="size-3 text-white"
-            />
-          </div>
-        </div>
+    <div class="relative z-10 flex flex-1 flex-col gap-2 px-4 pb-4 pt-4">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="font-newsreader italic text-white/95 leading-tight" :class="titleSize">
+          {{ project.name }}
+        </h3>
+      </div>
+      <div class="mt-auto flex flex-wrap items-center gap-2 pt-2">
+        <span
+          v-for="tag in tags.slice(0, tagLimit)"
+          :key="tag"
+          class="rounded-full bg-white/10 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white/70"
+        >
+          {{ tag }}
+        </span>
+        <span class="ml-auto flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white/60">
+          {{ $t('global.see_more') }}
+          <UIcon name="heroicons:arrow-right" class="size-3 text-white/60 transition-transform group-hover:-rotate-45" />
+        </span>
       </div>
     </div>
   </NuxtLink>

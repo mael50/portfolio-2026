@@ -1,0 +1,21 @@
+{
+  "name": "La Route de l'Huître",
+  "image": "/projects/rdlh.webp",
+  "link": "https://laroutedelhuitre.fr",
+  "release": "2026",
+  "featured": true,
+  "summary": "A digital guide to find producers, tasting cabins, and oyster spots around you.",
+  "description": "La Route de l'Huître is a digital guide to explore the coastline and meet producers, from oyster beds to the plate. The platform helps users locate places nearby, discover oyster‑farming know‑how, and plan visits with practical information and community reviews.",
+  "about_client": "La Route de l'Huître promotes oyster producers and tasting spots by offering a single, clear entry point to discover places and organize visits.",
+  "about_project": "The goal was to structure a fast, clear discovery experience: interactive map, venue profiles, community reviews, and essential details like opening hours, specialties, and routes.",
+  "industry": "Gastronomy & local produce",
+  "highlights": [
+    "Instant location of producers and tasting cabins",
+    "Centralized opening hours and periods",
+    "Specialties and oyster varieties highlighted",
+    "Routes to tasting locations"
+  ],
+  "gallery": [
+    "/projects/rdlh.webp"
+  ]
+}

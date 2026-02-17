@@ -1,109 +1,97 @@
-import { defineCollection, z } from '@nuxt/content'
-import { asSeoCollection } from '@nuxtjs/seo/content'
+import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+import { asSitemapCollection } from '@nuxtjs/sitemap/content'
 
-const commonContentSchema = z.object({
-  title: z.string().min(1),
+const basePageSchema = z.object({
+  title: z.string().optional(),
   description: z.string().optional(),
-  date: z.string().optional(),
-  path: z.string().optional(),
 })
 
-const commonArticleSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  date: z.string().min(1),
-  image: z.string().min(1),
-  readingTime: z.string().min(1),
-  tags: z.array(z.string().min(1)),
-  path: z.string().optional(),
-})
-
-const commonProjectSchema = z.object({
-  name: z.string().min(1),
-  image: z.string(),
-  link: z.string(),
-  release: z.string().min(1),
-  date: z.string().min(1),
+const projectSchema = z.object({
+  name: z.string().optional(),
+  image: z.string().optional(),
+  link: z.string().optional(),
+  release: z.string().optional(),
   featured: z.boolean().optional(),
+  summary: z.string().optional(),
   description: z.string().optional(),
   about_client: z.string().optional(),
   about_project: z.string().optional(),
+  industry: z.string().optional(),
+  role: z.string().optional(),
+  services: z.array(z.string()).optional(),
+  highlights: z.array(z.string()).optional(),
+  results: z.array(z.string()).optional(),
   gallery: z.array(z.string()).optional(),
+  stack: z.array(z.string()).optional(),
 })
 
-const commonFaqSchema = z.object({
-  title: z.string().min(1),
-  subtitle: z.string().min(1),
+const faqSchema = z.object({
+  title: z.string().optional(),
+  subtitle: z.string().optional(),
   items: z.array(
     z.object({
-      label: z.string().min(1),
-      content: z.string().min(1),
+      label: z.string(),
+      content: z.string(),
     }),
-  ),
+  ).optional(),
 })
 
-export const collections = {
-  content_en: defineCollection({
-    type: 'page',
-    source: {
-      include: 'en/**/*.md',
-      exclude: ['en/articles/*.md'],
-    },
-    schema: commonContentSchema,
-  }),
-  content_fr: defineCollection({
-    type: 'page',
-    source: {
-      include: 'fr/**/*.md',
-      exclude: ['fr/articles/*.md'],
-    },
-    schema: commonContentSchema,
-  }),
-  articles_en: defineCollection({
-    type: 'page',
-    source: {
-      include: 'en/articles/*.md',
-    },
-    schema: commonArticleSchema,
-  }),
-  articles_fr: defineCollection({
-    type: 'page',
-    source: {
-      include: 'fr/articles/*.md',
-    },
-    schema: commonArticleSchema,
-  }),
-  projects_en: defineCollection({
-    type: 'data',
-    source: 'en/projects/*.json',
-    schema: commonProjectSchema,
-  }),
-  projects_fr: defineCollection({
-    type: 'data',
-    source: 'fr/projects/*.json',
-    schema: commonProjectSchema,
-  }),
-  stack: defineCollection({
-    type: 'data',
-    source: 'stack.json',
-    schema: z.object({
-      items: z.array(
-        z.object({
-          name: z.string().min(1),
-          link: z.string(),
-          icon: z.string().min(1),
-        }),
-      ),
+const stackSchema = z.object({
+  items: z.array(
+    z.object({
+      name: z.string(),
+      link: z.string().optional(),
+      icon: z.string().optional(),
     }),
-  }),
-  faq_en: defineCollection({
-    type: 'data',
-    source: 'en/faq.json',
-    schema: commonFaqSchema,
-  }),
-  faq_fr: defineCollection({
-    type: 'data',
-    source: 'fr/faq.json',
-    schema: commonFaqSchema,
-  }),
-}
+  ).optional(),
+})
+
+export default defineContentConfig({
+  collections: {
+    content_fr: asSitemapCollection(defineCollection({
+      type: 'page',
+      source: 'fr/*.md',
+      schema: basePageSchema,
+    })),
+    content_en: asSitemapCollection(defineCollection({
+      type: 'page',
+      source: 'en/*.md',
+      schema: basePageSchema,
+    })),
+    articles_fr: asSitemapCollection(defineCollection({
+      type: 'page',
+      source: 'fr/articles/*.md',
+      schema: basePageSchema,
+    })),
+    articles_en: asSitemapCollection(defineCollection({
+      type: 'page',
+      source: 'en/articles/*.md',
+      schema: basePageSchema,
+    })),
+    projects_fr: asSitemapCollection(defineCollection({
+      type: 'page',
+      source: 'fr/projects/*.json',
+      schema: projectSchema,
+    })),
+    projects_en: asSitemapCollection(defineCollection({
+      type: 'page',
+      source: 'en/projects/*.json',
+      schema: projectSchema,
+    })),
+    faq_fr: defineCollection({
+      type: 'data',
+      source: 'fr/faq.json',
+      schema: faqSchema,
+    }),
+    faq_en: defineCollection({
+      type: 'data',
+      source: 'en/faq.json',
+      schema: faqSchema,
+    }),
+    stack: defineCollection({
+      type: 'data',
+      source: 'stack.json',
+      schema: stackSchema,
+    }),
+  },
+})

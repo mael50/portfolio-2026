@@ -14,6 +14,12 @@ const route = useRoute()
 const { link, seo, profile } = useAppConfig()
 const { t } = useI18n()
 
+const localKeywords = computed(() => {
+  const areas = (seo as { localAreas?: string[] }).localAreas ?? []
+  const base = ['développeur web', 'freelance', 'site vitrine', 'e-commerce', 'SaaS']
+  return [...base, ...areas].join(', ')
+})
+
 const pageSEO = computed(() => ({
   title: isWriting ? page?.title : page?.title || seo.title,
   description: isWriting ? page?.description : page?.description || seo.description,
@@ -104,6 +110,9 @@ useHead({
     { name: 'charset', content: 'utf-8' },
     { name: 'robots', content: 'index, follow' },
     { name: 'color-scheme', content: 'light dark' },
+    { name: 'keywords', content: localKeywords.value },
+    { name: 'geo.region', content: (seo as { localRegionCode?: string }).localRegionCode || 'FR-50' },
+    { name: 'geo.placename', content: (seo as { localAreas?: string[] }).localAreas?.[0] || 'Coutances' },
   ],
   link: [
     ...link,

@@ -1,12 +1,32 @@
 {
   "name": "L'Aura du Colibri",
   "image": "/projects/laura-colibri.webp",
+  "banner": "/projects/laura-du-colibri-banner.jpg",
   "link": "https://lauraducolibri.fr",
   "release": "2025",
   "featured": true,
+  "summary": "Site vitrine apaisant pour une praticienne en massages bien-être à Caen.",
   "description": "L'Aura du Colibri est un site vitrine pour une praticienne en massages bien-être à Caen. Le site présente les différentes prestations de massage dans une ambiance douce et apaisante, inspirée par la nature et le colibri. Il permet aux clients de découvrir l'univers de Laura et de prendre rendez-vous facilement.",
   "about_client": "Laura est une praticienne certifiée en massages bien-être, passionnée par l'accompagnement vers la détente et le lâcher-prise. Installée à Caen, elle a créé L'Aura du Colibri pour offrir une parenthèse de douceur à ses clients. Son approche est bienveillante et personnalisée, à l'image du colibri qui symbolise la joie et la légèreté.",
   "about_project": "L'objectif était de créer un site vitrine qui reflète la douceur et la sérénité des soins proposés. Le design met en avant des teintes naturelles et une typographie élégante pour instaurer une atmosphère de confiance et de bien-être dès la première visite. Le site est optimisé pour présenter clairement les tarifs et faciliter la prise de contact.",
+  "industry": "Bien-être",
+  "role": "Direction artistique & développement",
+  "services": [
+    "Site vitrine",
+    "Direction artistique",
+    "SEO local",
+    "Prise de contact"
+  ],
+  "highlights": [
+    "Ambiance douce et naturelle",
+    "Mise en avant des prestations",
+    "Parcours de prise de contact simplifié"
+  ],
+  "results": [
+    "Présence en ligne professionnelle",
+    "Offre clarifiée et rassurante",
+    "Conversion facilitée par un CTA clair"
+  ],
   "gallery": [
     "/projects/laura-colibri.webp"
   ]

@@ -1,12 +1,32 @@
 {
   "name": "Cultio",
   "image": "/projects/cultio.webp",
+  "banner": "/projects/cultio-banner.jpg",
   "link": "https://cultio.maellaroque.fr/",
   "release": "Bientôt...",
   "featured": true,
+  "summary": "Plateforme SaaS de gestion agricole pour centraliser parcelles, cultures et finances.",
   "description": "Cultio est une solution complète de gestion agricole conçue pour les petites et moyennes exploitations. L'application permet de centraliser la gestion des parcelles, des cultures, des tâches et des finances pour optimiser les rendements et simplifier le quotidien des agriculteurs.",
   "about_client": "Cultio est une initiative née du besoin de moderniser et de simplifier la gestion des exploitations agricoles. L'objectif est de fournir aux agriculteurs un outil intuitif et puissant pour les accompagner dans leur transition numérique et l'optimisation de leur production.",
   "about_project": "Le défi était de concevoir une interface utilisateur ergonomique capable de gérer des données complexes (cartographie des parcelles, suivi des cultures, comptabilité) tout en restant accessible sur le terrain. L'application intègre des fonctionnalités avancées comme la météo agricole, la gestion des stocks et des tableaux de bord analytiques pour une prise de décision éclairée.",
+  "industry": "Agriculture",
+  "role": "Design & développement produit",
+  "services": [
+    "UX/UI",
+    "Architecture produit",
+    "Développement full-stack",
+    "Tableaux de bord"
+  ],
+  "highlights": [
+    "Cartographie des parcelles et suivi des cultures",
+    "Tableaux de bord analytiques pour la prise de décision",
+    "Gestion des stocks et météo agricole intégrée"
+  ],
+  "results": [
+    "Gestion centralisée des opérations",
+    "Gain de temps sur le suivi quotidien",
+    "Base prête pour la montée en charge"
+  ],
   "gallery": [
     "/projects/cultio.webp"
   ]

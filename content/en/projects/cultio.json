@@ -4,9 +4,28 @@
   "link": "https://cultio.maellaroque.fr/",
   "release": "Soon",
   "featured": true,
+  "summary": "SaaS farm management platform to centralize plots, crops, and finances.",
   "description": "Cultio is a comprehensive farm management solution designed for small and medium-sized farms. The application centralizes the management of plots, crops, tasks, and finances to optimize yields and simplify the daily lives of farmers.",
   "about_client": "Cultio is an initiative born from the need to modernize and simplify farm management. The goal is to provide farmers with an intuitive and powerful tool to support them in their digital transition and production optimization.",
   "about_project": "The challenge was to design an ergonomic user interface capable of managing complex data (plot mapping, crop tracking, accounting) while remaining accessible in the field. The application integrates advanced features such as agricultural weather, inventory management, and analytical dashboards for informed decision-making.",
+  "industry": "Agriculture",
+  "role": "Product design & development",
+  "services": [
+    "UX/UI",
+    "Product architecture",
+    "Full-stack development",
+    "Dashboards"
+  ],
+  "highlights": [
+    "Plot mapping and crop tracking",
+    "Decision-ready analytical dashboards",
+    "Inventory management and integrated farm weather"
+  ],
+  "results": [
+    "Centralized operations management",
+    "Time saved on daily tracking",
+    "Foundation ready for scaling"
+  ],
   "gallery": [
     "/projects/cultio.webp"
   ]

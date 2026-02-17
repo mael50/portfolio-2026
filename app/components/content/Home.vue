@@ -106,11 +106,17 @@ const route = useRoute()
 const localePath = useLocalePath()
 const { locale, t } = useI18n()
 const collection = computed(() => `content_${locale.value}` as keyof Collections)
+const { profile, seo, socials } = useAppConfig()
 
 const { data: page } = await useAsyncData(route.path, () => queryCollection(collection.value).path(route.path).first())
 
 // Generate JSON-LD for LocalBusiness if it's a local landing page
 if (route.path.includes('creation-site-web')) {
+  const areas = (seo as { localAreas?: string[] }).localAreas ?? []
+  const imageUrl = profile.picture?.startsWith('http')
+    ? profile.picture
+    : `${seo.url}${profile.picture}`
+
   useHead({
     script: [
       {
@@ -118,38 +124,30 @@ if (route.path.includes('creation-site-web')) {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'LocalBusiness',
-          name: 'Maël Laroque - Développeur Web',
-          image: 'https://maellaroque.fr/me.jpg', // Ensure this image exists or use a valid one
-          '@id': 'https://maellaroque.fr',
-          url: 'https://maellaroque.fr',
-          telephone: '+33600000000', // Replace with actual number if available or remove
+          name: `${profile.name} - Développeur Web`,
+          image: imageUrl,
+          '@id': `${seo.url}#local-business`,
+          url: seo.url,
+          telephone: profile.phone,
+          email: profile.email,
+          sameAs: Object.values(socials ?? {}),
           address: {
             '@type': 'PostalAddress',
             addressLocality: (page.value as { title?: string })?.title?.split(' à ')[1]?.split(' - ')[0] || 'Gouville-sur-Mer',
-            addressRegion: 'Normandie',
-            addressCountry: 'FR'
+            addressRegion: (seo as { localRegion?: string }).localRegion || 'Normandie',
+            addressCountry: (seo as { localCountry?: string }).localCountry || 'FR',
           },
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: 49.0964,
-            longitude: -1.5806
-          },
-          priceRange: '€€',
-          openingHoursSpecification: {
-            '@type': 'OpeningHoursSpecification',
-            dayOfWeek: [
-              'Monday',
-              'Tuesday',
-              'Wednesday',
-              'Thursday',
-              'Friday'
-            ],
-            opens: '09:00',
-            closes: '18:00'
-          }
-        })
-      }
-    ]
+          areaServed: areas.map((name) => ({ '@type': 'Place', name })),
+          serviceType: [
+            'Création de site vitrine',
+            'Site e-commerce',
+            'Développement SaaS',
+            'Maintenance et refonte',
+            'SEO local',
+          ],
+        }),
+      },
+    ],
   })
 }
 </script>
