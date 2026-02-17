@@ -36,7 +36,7 @@
 
         <HomeMarquee style="--stagger: 5" data-animate />
 
-        <div style="--stagger: 6" data-animate class="mt-12 flex w-full max-w-3xl flex-col gap-4 lg:mt-16">
+        <div style="--stagger: 6" data-animate class="mt-12 flex w-full max-w-4xl flex-col gap-4 lg:mt-16">
           <!-- projects -->
           <HomeProjects />
         </div>
@@ -100,54 +100,54 @@
 </template>
 
 <script setup lang="ts">
-import type { Collections } from '@nuxt/content'
+  import type { Collections } from '@nuxt/content'
 
-const route = useRoute()
-const localePath = useLocalePath()
-const { locale, t } = useI18n()
-const collection = computed(() => `content_${locale.value}` as keyof Collections)
-const { profile, seo, socials } = useAppConfig()
+  const route = useRoute()
+  const localePath = useLocalePath()
+  const { locale, t } = useI18n()
+  const collection = computed(() => `content_${locale.value}` as keyof Collections)
+  const { profile, seo, socials } = useAppConfig()
 
-const { data: page } = await useAsyncData(route.path, () => queryCollection(collection.value).path(route.path).first())
+  const { data: page } = await useAsyncData(route.path, () => queryCollection(collection.value).path(route.path).first())
 
-// Generate JSON-LD for LocalBusiness if it's a local landing page
-if (route.path.includes('creation-site-web')) {
-  const areas = (seo as { localAreas?: string[] }).localAreas ?? []
-  const imageUrl = profile.picture?.startsWith('http')
-    ? profile.picture
-    : `${seo.url}${profile.picture}`
+  // Generate JSON-LD for LocalBusiness if it's a local landing page
+  if (route.path.includes('creation-site-web')) {
+    const areas = (seo as { localAreas?: string[] }).localAreas ?? []
+    const imageUrl = profile.picture?.startsWith('http')
+      ? profile.picture
+      : `${seo.url}${profile.picture}`
 
-  useHead({
-    script: [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'LocalBusiness',
-          name: `${profile.name} - Développeur Web`,
-          image: imageUrl,
-          '@id': `${seo.url}#local-business`,
-          url: seo.url,
-          telephone: profile.phone,
-          email: profile.email,
-          sameAs: Object.values(socials ?? {}),
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: (page.value as { title?: string })?.title?.split(' à ')[1]?.split(' - ')[0] || 'Gouville-sur-Mer',
-            addressRegion: (seo as { localRegion?: string }).localRegion || 'Normandie',
-            addressCountry: (seo as { localCountry?: string }).localCountry || 'FR',
-          },
-          areaServed: areas.map((name) => ({ '@type': 'Place', name })),
-          serviceType: [
-            'Création de site vitrine',
-            'Site e-commerce',
-            'Développement SaaS',
-            'Maintenance et refonte',
-            'SEO local',
-          ],
-        }),
-      },
-    ],
-  })
-}
+    useHead({
+      script: [
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            name: `${profile.name} - Développeur Web`,
+            image: imageUrl,
+            '@id': `${seo.url}#local-business`,
+            url: seo.url,
+            telephone: profile.phone,
+            email: profile.email,
+            sameAs: Object.values(socials ?? {}),
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: (page.value as { title?: string })?.title?.split(' à ')[1]?.split(' - ')[0] || 'Gouville-sur-Mer',
+              addressRegion: (seo as { localRegion?: string }).localRegion || 'Normandie',
+              addressCountry: (seo as { localCountry?: string }).localCountry || 'FR',
+            },
+            areaServed: areas.map((name) => ({ '@type': 'Place', name })),
+            serviceType: [
+              'Création de site vitrine',
+              'Site e-commerce',
+              'Développement SaaS',
+              'Maintenance et refonte',
+              'SEO local',
+            ],
+          }),
+        },
+      ],
+    })
+  }
 </script>
