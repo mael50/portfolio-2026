@@ -28,7 +28,7 @@ Le Directeur de la publication du Site est **Maël Laroque**.
 
 Par téléphone : +33 7 69 71 17 62
 Par email : contact@maellaroque.fr
-Par courrier : Gouville-sur-Mer, 50560
+Par courrier : 22 Allée Janine Hardy, 14000 Caen
 
 ## Données personnelles
 

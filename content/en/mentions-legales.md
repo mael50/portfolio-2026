@@ -28,7 +28,7 @@ The Director of the publication of the Site is **Maël Laroque**.
 
 By phone: +33 7 69 71 17 62
 By email: contact@maellaroque.fr
-By mail: Gouville-sur-Mer, 50560
+By mail: 22 Allée Janine Hardy, 14000 Caen
 
 ## Personal Data
 
